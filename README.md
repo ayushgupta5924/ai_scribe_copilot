@@ -13,8 +13,8 @@ A production-ready Flutter app for medical professionals to record patient consu
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/[username]/medical-transcription-app
-cd medical-transcription-app
+git clone https://github.com/ayushgupta5924/ai_scribe_copilot
+cd ai_scribe_copilot
 flutter pub get
 flutter run
 ```
