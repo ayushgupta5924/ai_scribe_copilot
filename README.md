@@ -5,10 +5,10 @@ A production-ready Flutter app for medical professionals to record patient consu
 ## 📱 Download & Demo
 
 ### Android APK
-**[📥 Download APK](https://github.com/[username]/medical-transcription-app/releases/latest/download/app-release.apk)**
+**[📥 Download APK](https://drive.google.com/file/d/1W2Dnl8iX8VAh91SR-NG33Uew3PxV1GsC/view?usp=sharing)**
 
 ### iOS Demo
-**[🎥 iOS Loom Video Demo](https://www.loom.com/share/your-video-id)**
+**[🎥 iOS Loom Video Demo](https://drive.google.com/file/d/1W2Dnl8iX8VAh91SR-NG33Uew3PxV1GsC/view?usp=sharing)**
 
 ## 🚀 Quick Start
 
@@ -18,6 +18,16 @@ cd medical-transcription-app
 flutter pub get
 flutter run
 ```
+
+
+**Flutter version output:**
+
+Flutter 3.27.0 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 8495dee1fd (10 months ago) • 2024-12-10 14:23:39 -0800
+Engine • revision 83bacfc525
+Tools • Dart 3.6.0 • DevTools 2.40.2
+
+
 
 ## ✨ Features Implemented
 
@@ -76,7 +86,8 @@ docker-compose up
 ```
 
 ### Live Backend
-**[🌐 Live API](https://your-backend-url.com)**
+**[🌐 Live API](https://localhost:8000/)**
+
 
 ## 🧪 Test Scenarios
 
@@ -134,6 +145,7 @@ Tools • Dart 3.2.3 • DevTools 2.28.4
 - ✅ **Native platform features** (share, notifications, haptics)
 - ✅ **Cross-platform builds** (Android APK + iOS demo)
 
+Here are the bonus features that were implemented by me.
 ## 🏆 Bonus Features (+30pts)
 
 ### On-Device Speech Recognition (+15pts)
@@ -167,13 +179,5 @@ Tools • Dart 3.2.3 • DevTools 2.28.4
 - **Secure API authentication** with JWT
 - **Offline-first architecture** with sync
 - **Comprehensive error handling** and recovery
-
-## 📞 Contact
-
-Built for Attack Capital Mobile Engineering Challenge
-- **GitHub**: [github.com/[username]/medical-transcription-app](https://github.com/[username]/medical-transcription-app)
-- **Demo Video**: [5-minute comprehensive demo](https://www.loom.com/share/demo-video-id)
-
----
 
 **Ready for production deployment. Zero data loss guaranteed.** 🚀
