@@ -1,0 +1,115 @@
+﻿The Assignment: Medical Transcription App
+
+Build a Flutter app that doctors can trust with their patient consultations.
+
+The app records audio during medical visits and streams it to a backend for AI transcription. Sounds simple? Here's the catch—it must work flawlessly when:
+* Doctors get phone calls mid-recording
+* They switch to other apps to check drug databases
+* The hospital WiFi drops out
+* Their phone dies at 60% battery (happens more than you'd think)
+
+
+
+Core Requirements
+
+1. Real-Time Audio Streaming
+* Stream audio chunks to backend during recording (not after)
+* Continue recording with phone locked or app minimized
+* Handle chunk ordering, retries, and network failures
+* Must demonstrate native microphone access with proper gain control
+
+2. Bulletproof Interruption Handling Must survive without losing data:
+* Phone calls (auto pause/resume)
+* App switching (EMR, calculator, camera)
+* Network outages (queue locally, retry when back)
+* Phone restarts (recover unsent chunks)
+* Memory pressure (when system kills other apps)
+
+
+Technical Stack
+* Flutter (no Expo/React Native - we need native performance)
+* Platform channels for native features when needed
+* Android foreground service + iOS background audio
+
+
+API Reference & Resources
+📚 Full API Documentation: https://docs.google.com/document/d/1hzfry0fg7qQQb39cswEychYMtBiBKDAqIg6LamAKENI/edit?usp=sharing
+🔧 Postman Collection (mock backend): https://drive.google.com/file/d/1rnEjRzH64ESlIi5VQekG525Dsf8IQZTP/view?usp=sharing
+
+Key endpoints you'll use:
+
+# Session Management
+POST /v1/upload-session          # Start recording
+POST /v1/get-presigned-url      # Get chunk upload URL
+PUT  {presignedUrl}              # Upload audio chunk
+POST /v1/notify-chunk-uploaded   # Confirm chunk received
+
+
+# Patient Management
+GET  /v1/patients?userId={userId}
+POST /v1/add-patient-ext
+GET  /v1/fetch-session-by-patient/{patientId}
+
+
+Mock Backend
+* Use the postman collection as reference to build a backend for the app 
+* One-command Docker deployment: docker-compose up
+* Deploy live 
+
+
+
+
+Pass/Fail Test Scenarios
+
+Test 1: Start 5-minute recording → Lock phone → Leave locked
+Pass: Audio streams to backend, no data loss
+
+Test 2: Recording → Phone call → End call
+Pass: Auto-pause, auto-resume, no audio lost
+
+Test 3: Recording → Airplane mode → Network returns
+Pass: Chunks queue locally, upload when connected
+
+Test 4: Recording → Open camera → Take photo → Return
+Pass: Recording continues, proper native integration
+
+Test 5: Recording → Kill app → Reopen
+Pass: Graceful recovery, clear session state
+
+
+Native Feature Requirements
+Critical: Show you can use phone hardware properly
+Microphone
+* Audio level visualization
+* Gain control (not just on/off)
+* Handle Bluetooth/wired headset switching
+System Integration
+* Native share sheet (not custom UI)
+* System notifications with actions
+* Haptic feedback on key actions
+* Respect Do Not Disturb mode
+
+
+Bonus Points (+30pts)
+
+On-Device Speech Recognition (+15pts)
+* Live transcription preview during recording
+* Uses platform speech APIs (iOS Speech, Android SpeechRecognizer)
+* Shows you understand native platform capabilities
+
+Professional Polish (+15pts)
+* Adaptive icons (Android) / alternate icons (iOS)
+* Platform-specific UI (Material You on Android 12+)
+* Accessibility: Screen reader support, dynamic type
+
+
+
+
+
+Scoring
+* Native Platform Mastery (35pts): Proper hardware access
+* Real-time Streaming (25pts): Chunks upload during recording
+* Interruption Resilience (20pts): Survives all scenarios
+* Cross-Platform (20pts): APK + iOS Loom provided
+* Code Quality (15pts): Builds first try, clean code
+* Polish (15pts): Feels native, not web wrapper
